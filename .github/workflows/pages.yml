@@ -1,0 +1,46 @@
+# Refreshes mod data from the Factorio Mod Portal and deploys the site to GitHub Pages.
+# Repo settings → Pages → Source must be set to "GitHub Actions".
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours, picks up new mods and releases
+  workflow_dispatch:
+
+permissions:
+  actions: write # for the keep-alive step
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # If the portal is down, deploy with the committed data/mods.js.
+      - run: python scripts/fetch_mods.py || echo "::warning::Mod Portal fetch failed, using committed data"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      # GitHub pauses scheduled workflows after 60 days without commits;
+      # re-enabling the workflow resets that timer.
+      - if: always() && github.event_name == 'schedule'
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/pages.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}

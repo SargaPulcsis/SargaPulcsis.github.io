@@ -1,0 +1,417 @@
+/* Styled after the Factorio in-game GUI: bevelled frames, inset panels,
+   beige headings and the orange hover glow. */
+:root {
+  --page: #1a191a;
+  --frame: #313031;
+  --frame-hi: #4c4b4c;
+  --frame-lo: #1c1b1c;
+  --deep: #242324;
+  --deep-2: #2b2a2b;
+  --text: #ffffff;
+  --muted: #b9b4ab;
+  --heading: #ffe6c0;
+  --orange: #ffa632;
+  --link: #ffb54a;
+  --button: #8e8e8e;
+  --button-hi: #b4b4b4;
+  --button-lo: #5c5c5c;
+  --green: #5eb663;
+  --green-hi: #8bd38e;
+  --green-lo: #397a3d;
+  --max: 1720px;
+  --card: clamp(136px, 11vw, 240px);
+}
+
+* { box-sizing: border-box; }
+
+/* text grows a little on big screens so wide layouts don't look empty */
+html { background: var(--page); font-size: clamp(15px, 0.3vw + 11px, 18px); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: clamp(12px, 2vw, 40px) clamp(8px, 2vw, 40px) 48px;
+  background:
+    radial-gradient(ellipse at 50% -20%, #2c2a26 0%, transparent 60%),
+    var(--page);
+  color: var(--text);
+  font: 400 1rem/1.5 "Titillium Web", system-ui, sans-serif;
+}
+
+a { color: var(--link); }
+a:hover { color: var(--orange); }
+
+/* ---------- window frame ---------- */
+
+.window {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 12px 12px;
+  background: var(--frame);
+  border-radius: 4px;
+  box-shadow:
+    inset 1px 1px 0 var(--frame-hi),
+    inset -1px -1px 0 var(--frame-lo),
+    0 0 0 1px #000,
+    0 18px 40px #000a;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+}
+
+.titlebar h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* the striped "drag handle" that fills Factorio title bars */
+.drag {
+  flex: 1;
+  min-width: 24px;
+  height: 22px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #545354 0 2px,
+    #1d1c1d 2px 3px,
+    transparent 3px 5px
+  );
+  opacity: .8;
+}
+
+.inner {
+  background: var(--frame);
+  padding: 12px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px #3c3b3c;
+}
+
+.deep {
+  background: var(--deep);
+  border-radius: 2px;
+  box-shadow: inset 0 2px 4px #000c, inset 0 0 0 1px #0d0d0d;
+}
+
+.section-title {
+  margin: 20px 0 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+.section-title:first-child { margin-top: 0; }
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--button);
+  color: #000;
+  font: 600 .94rem/1 "Titillium Web", sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 var(--button-hi),
+    inset 0 -2px 0 var(--button-lo),
+    0 0 0 1px #000,
+    0 2px 2px #0008;
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--orange);
+  color: #000;
+  box-shadow: inset 0 1px 0 #ffd08a, inset 0 -2px 0 #b06a10, 0 0 0 1px #000, 0 0 10px #ffa63266;
+  outline: none;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn.green {
+  background: var(--green);
+  box-shadow: inset 0 1px 0 var(--green-hi), inset 0 -2px 0 var(--green-lo), 0 0 0 1px #000, 0 2px 2px #0008;
+}
+.btn.green:hover, .btn.green:focus-visible {
+  background: var(--green-hi);
+  box-shadow: inset 0 1px 0 #c3f0c4, inset 0 -2px 0 var(--green-lo), 0 0 0 1px #000, 0 0 10px #8bd38e66;
+}
+
+/* ---------- home: intro + stats ---------- */
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.intro p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+.ai-note {
+  margin: 10px 0 0;
+  padding: 5px 10px;
+  border-left: 3px solid var(--orange);
+  background: #2a2723;
+  font-size: .85rem;
+  color: var(--muted);
+}
+.ai-note b { color: var(--heading); font-weight: 600; }
+
+.stats { display: flex; flex-wrap: wrap; gap: 8px; }
+.stat {
+  padding: 6px 14px;
+  min-width: 110px;
+}
+.stat b { display: block; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+.stat span { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ---------- home: looping carousel ---------- */
+
+.belt {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 0 8px;
+  animation: belt var(--belt-time, 60s) linear infinite;
+}
+/* mouse hover keeps it moving (see app.js); only keyboard focus stops it */
+.belt:has(.card:focus-visible) .track { animation-play-state: paused; }
+
+@keyframes belt {
+  to { transform: translateX(-50%); }
+}
+
+.card {
+  flex: none;
+  width: var(--card);
+  padding: 10px 10px 8px;
+  background: var(--frame);
+  border-radius: 3px;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: inset 1px 1px 0 var(--frame-hi), inset -1px -1px 0 var(--frame-lo), 0 0 0 1px #000, 0 4px 8px #0009;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card .slot {
+  display: block;
+  aspect-ratio: 1;
+  padding: 6px;
+}
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+.card .name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 8px;
+  min-height: 2.6em;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--heading);
+  text-align: center;
+}
+/* .hot is set by app.js: :hover isn't refreshed while a card slides under a still mouse */
+.card.hot, .card:focus-visible {
+  outline: none;
+  transform: translateY(-4px);
+  box-shadow: inset 1px 1px 0 var(--frame-hi), inset -1px -1px 0 var(--frame-lo), 0 0 0 2px var(--orange), 0 0 18px #ffa63255;
+}
+.card.hot .name, .card:focus-visible .name { color: var(--orange); }
+
+.noimg {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #5e5c58;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* ---------- home: list ---------- */
+
+/* one column normally, two or more on wide screens; the 1px gaps are the separators */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr));
+  gap: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: #191819;
+}
+.list li { background: var(--deep); }
+
+.row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 8px 10px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 2px;
+}
+.row:hover, .row:focus-visible { background: #3a3631; outline: 1px solid var(--orange); }
+.row img, .row .noimg { width: 56px; height: 56px; border-radius: 2px; font-size: 1.4rem; background: var(--deep-2); }
+.row .t { font-weight: 700; color: var(--heading); }
+.row:hover .t { color: var(--orange); }
+.row .s {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.row .meta { text-align: right; font-size: .85rem; color: var(--muted); white-space: nowrap; }
+.row .meta b { color: var(--text); font-weight: 600; }
+
+.footer {
+  max-width: var(--max);
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: .8rem;
+  color: #77736c;
+}
+.footer a { color: inherit; }
+
+/* ---------- mod page ---------- */
+
+.mod {
+  display: grid;
+  grid-template-columns: clamp(260px, 22vw, 380px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.side .slot { padding: 8px; }
+.side .slot img, .side .slot .noimg { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.side .summary { margin: 12px 2px; color: var(--muted); }
+.side .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.side .actions .btn { justify-content: center; }
+
+.facts { margin: 12px 0 0; padding: 6px 10px; }
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 0;
+  font-size: .92rem;
+}
+.facts div + div { border-top: 1px solid #191819; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; text-align: right; font-weight: 600; }
+
+.tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+.tag {
+  padding: 0 7px;
+  border-radius: 2px;
+  background: #403e3a;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 4px; }
+.tab {
+  padding: 6px 16px 4px;
+  border: 0;
+  border-radius: 3px 3px 0 0;
+  background: #575657;
+  color: #fff;
+  font: 600 .94rem/1.3 "Titillium Web", sans-serif;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 #6d6c6d, 0 0 0 1px #000;
+}
+.tab:hover { background: #6b5a40; }
+.tab[aria-selected="true"] {
+  background: var(--deep);
+  color: var(--heading);
+  box-shadow: inset 0 1px 0 #3a393a, 0 0 0 1px #000;
+}
+.panel { padding: 16px 20px; min-height: 320px; }
+.panel[hidden] { display: none; }
+
+/* rendered markdown from the portal description */
+.md { overflow-wrap: anywhere; max-width: 95ch; }
+.md > :first-child { margin-top: 0; }
+.md h1, .md h2, .md h3, .md h4 { color: var(--heading); line-height: 1.25; margin: 1.3em 0 .5em; }
+.md h1 { font-size: 1.5rem; }
+.md h2 { font-size: 1.25rem; }
+.md h3 { font-size: 1.08rem; }
+.md img { max-width: 100%; height: auto; }
+.md code { padding: 1px 5px; background: #171617; border-radius: 2px; font-size: .9em; }
+.md pre { padding: 10px 12px; background: #171617; border-radius: 2px; overflow-x: auto; }
+.md pre code { padding: 0; }
+.md table { border-collapse: collapse; display: block; overflow-x: auto; }
+.md th, .md td { padding: 4px 10px; border: 1px solid #3d3c3d; }
+.md th { background: #2e2d2e; color: var(--heading); }
+.md hr { border: 0; border-top: 1px solid #3d3c3d; }
+.md blockquote { margin: 0; padding: 2px 14px; border-left: 3px solid var(--orange); color: var(--muted); }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.gallery a { display: block; padding: 6px; background: #171617; border-radius: 2px; }
+.gallery a:hover { outline: 2px solid var(--orange); }
+.gallery img { display: block; width: 100%; height: auto; }
+
+.changes article + article { margin-top: 18px; padding-top: 14px; border-top: 1px solid #3d3c3d; }
+.changes header { display: flex; align-items: baseline; gap: 12px; }
+.changes h3 { margin: 0; color: var(--heading); font-size: 1.1rem; }
+.changes time { color: var(--muted); font-size: .85rem; }
+.changes h4 { margin: 8px 0 2px; font-size: .9rem; color: var(--orange); }
+.changes ul { margin: 0; padding-left: 20px; }
+
+.versions { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.versions th { text-align: left; color: var(--heading); font-weight: 700; padding: 4px 8px; }
+.versions td { padding: 6px 8px; border-top: 1px solid #343334; }
+.versions td:last-child, .versions th:last-child { text-align: right; }
+
+.missing { padding: 40px; text-align: center; color: var(--muted); }
+
+/* ---------- small screens / motion ---------- */
+
+@media (max-width: 780px) {
+  .window { padding: 0 8px 8px; }
+  .inner { padding: 8px; }
+  .titlebar h1 { font-size: 1.15rem; }
+  .mod { grid-template-columns: 1fr; }
+  .side .slot { max-width: 220px; margin: 0 auto; }
+  .row { grid-template-columns: 48px 1fr; }
+  .row img, .row .noimg { width: 48px; height: 48px; }
+  .row .meta { grid-column: 2; text-align: left; }
+  .panel { padding: 12px; }
+  .stat { flex: 1; min-width: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+  .belt { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .track [aria-hidden="true"] { display: none; }
+  .card, .card.hot { transition: none; transform: none; }
+}
