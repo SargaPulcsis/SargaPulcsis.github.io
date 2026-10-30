@@ -28,7 +28,7 @@ window.MOD_DATA = {
     "? recipe-tweaker"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/ca222e50f1ffa20b4d3044af245b6d5060fdb248.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/ffd3f6596c65bced353a29e143a6251fe508a3a2.png",
@@ -61,6 +61,12 @@ window.MOD_DATA = {
      "date": "2026-10-24T12:36:43.564000Z",
      "factorio": "0.17"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     83
+    ]
    ]
   },
   {
@@ -71,8 +77,8 @@ window.MOD_DATA = {
    "changelog": "---------------------------------------------------------------------------------------------------\nVersion: 1.0.1\nDate: 23. 10. 2026\n  Info:\n    - Factorio 2.1 release of 1.0.0 with the same features.\n---------------------------------------------------------------------------------------------------\nVersion: 1.0.0\nDate: 23. 10. 2026\n  Features:\n    - A zoo surface for every planet: each tile, decorative, resource, cliff and entity its map generation places, in labelled rows.\n    - Works with planet mods: the list comes from each planet's map generation settings.\n    - Shortcut-bar button with a panel: visit any planet's zoo, rebuild it, or go back to where you were.\n    - /planet-zoo <planet> command; without a planet it opens the panel.\n    - Zoos are built on the first visit and deleted when the mod set changes, so they always match the loaded mods.\n  Settings:\n    - Everyone can use Planet Zoo (map, off by default). Off: admins only.\n  Locale:\n    - English and Hungarian.\n",
    "category": "tweaks",
    "tags": [
-    "environment",
-    "cheats"
+    "cheats",
+    "environment"
    ],
    "downloads": 9,
    "created": "2026-10-23T21:57:48.721000Z",
@@ -87,7 +93,7 @@ window.MOD_DATA = {
     "space-age >= 2.1.0"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/6f48a1a18a3c3d1dee2895d98da36829aa8d5216.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/c18728610d0c77be49c7e8d2ce1e7528335f35a5.png"
@@ -103,6 +109,12 @@ window.MOD_DATA = {
      "date": "2026-10-23T21:57:48.715000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     9
+    ]
    ]
   },
   {
@@ -113,8 +125,8 @@ window.MOD_DATA = {
    "changelog": "---------------------------------------------------------------------------------------------------\nVersion: 1.0.1\nDate: 23. 10. 2026\n  Info:\n    - Factorio 2.1 release of 1.0.0 with the same features.\n---------------------------------------------------------------------------------------------------\nVersion: 1.0.0\nDate: 23. 10. 2026\n  Features:\n    - Rocket silos can launch their cargo pod straight to another unlocked planet.\n    - The pod lands on the destination's cargo landing pad, or in a container near the map center if there is none.\n    - Ride along with the cargo pod to travel between planets without a space platform.\n    - Automatic launch conditions: when the rocket is ready, when the cargo is full, or when enough of an item is loaded.\n    - Launch settings are kept by copy/paste (shift-click) and blueprints.\n    - Smooth space transition between the departure and the arrival animation.\n  Settings:\n    - Require end-game research (startup, on by default). Off: available from the start.\n    - Empty inventory to ride along (map, on by default).\n  Locale:\n    - English and Hungarian.\n",
    "category": "tweaks",
    "tags": [
-    "transportation",
     "logistics",
+    "transportation",
     "cheats"
    ],
    "downloads": 45,
@@ -130,7 +142,7 @@ window.MOD_DATA = {
     "space-age >= 2.1"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/26a045a6ad86f43d4e54ec95ec8589f3b38abc87.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/c21fe315003732d3979b59cf47f0e2771f288d93.png"
@@ -146,6 +158,12 @@ window.MOD_DATA = {
      "date": "2026-10-23T21:31:50.745000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     45
+    ]
    ]
   },
   {
@@ -174,7 +192,7 @@ window.MOD_DATA = {
     "! aop-k2so-compat"
    ],
    "license": "MIT",
-   "source": "https://mods.factorio.com/mod/k2-planet-mod",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/96e1062be6970a65451b29aa1ab93ce8ea0f8d76.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/49105abede06bce1fcba9ff759087264e042804f.png",
@@ -236,6 +254,12 @@ window.MOD_DATA = {
      "date": "2026-06-06T07:59:11.481000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     846
+    ]
    ]
   },
   {
@@ -271,7 +295,7 @@ window.MOD_DATA = {
     "? planet-muluna"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/23fa0f3794ad4e7556018f3684eeac7a16ddbae8.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/785be5132ba4311fac3b678ca3d41474a516ee4e.png"
@@ -297,6 +321,12 @@ window.MOD_DATA = {
      "date": "2026-10-22T13:15:31.977000Z",
      "factorio": "1.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     15
+    ]
    ]
   },
   {
@@ -318,7 +348,7 @@ window.MOD_DATA = {
     "base >= 2.1"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/49cbf574cba5ed99375074f6d416bf51d15b438d.thumb.png",
    "images": [],
    "releases": [
@@ -327,6 +357,12 @@ window.MOD_DATA = {
      "date": "2026-10-16T06:59:46.799000Z",
      "factorio": "2.1"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     52
+    ]
    ]
   },
   {
@@ -337,9 +373,9 @@ window.MOD_DATA = {
    "changelog": "---------------------------------------------------------------------------------------------------\nVersion: 0.1.1\nDate: 2026-10-15\n  Changes:\n    - Updated for Factorio 2.1 and Krastorio 2 Spaced Out 2.0.14.\n    - Titanium (bztitanium) is now a recommended dependency.\n---------------------------------------------------------------------------------------------------\nVersion: 0.1.0\nDate: 2026-10-15\n  Features:\n    - Gold ore, rich rock and menarite rift on Nauvis (menarite on the K2 planet with Krastorio 2 Planet).\n    - K1 processing chains: gold, raw chunks, menarite (titanium), imersite (tantalum).\n    - K1 electronics: circuit board, wafers, RAM, CPU, menarite CPU, module case, imersite glass.\n    - Liquid nitrogen, liquid oxygen and molten gold.\n    - Green circuits need a circuit board; the advanced solar panel needs imersite glass.\n    - Modules (including quality modules) are made from K1 parts: module case, RAM, CPU, menarite CPU.\n    - Optional sand from stone mining.\n    - Optional alternative recipes with K1 products and Space Age replacements.\n  Compatibility:\n    - Titanium (bztitanium) replaces the K1 titanium when installed.\n  Graphics:\n    - Graphics from Krastorio-graphics (Krastor, Linver), LGPLv3.\n",
    "category": "content",
    "tags": [
-    "manufacturing",
     "mining",
-    "fluids"
+    "fluids",
+    "manufacturing"
    ],
    "downloads": 17,
    "created": "2026-10-15T21:45:01.343000Z",
@@ -358,7 +394,7 @@ window.MOD_DATA = {
     "? k2-planet-mod >= 0.4.5"
    ],
    "license": "GNU LGPLv3",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/ef127d862e81cc6a890a97f8e3664f3c2783d596.thumb.png",
    "images": [],
    "releases": [
@@ -372,6 +408,12 @@ window.MOD_DATA = {
      "date": "2026-10-15T21:45:01.339000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     17
+    ]
    ]
   },
   {
@@ -396,7 +438,7 @@ window.MOD_DATA = {
     "? space-age >= 2.1.0"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/3cb7c4e1e7fb7c11dffd5f9178bb7704eb525f66.thumb.png",
    "images": [],
    "releases": [
@@ -405,6 +447,12 @@ window.MOD_DATA = {
      "date": "2026-09-02T07:32:45.923000Z",
      "factorio": "2.1"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     292
+    ]
    ]
   },
   {
@@ -433,7 +481,7 @@ window.MOD_DATA = {
     "? Age-of-Production"
    ],
    "license": "MIT",
-   "source": "https://mods.factorio.com/mod/AluminiumX",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/98f1bff4747956374c10c4c7bdf5885fae9b87b6.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/c19f9ec9ec9ed3bf30a0bd4576a5bcf097728fdd.png"
@@ -449,6 +497,12 @@ window.MOD_DATA = {
      "date": "2026-08-28T19:22:42.249000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     91
+    ]
    ]
   },
   {
@@ -474,7 +528,7 @@ window.MOD_DATA = {
     "space-age >= 2.0.0"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/cccd063e1e18da03b12bbaeaf6f03ac0e63da32e.thumb.png",
    "images": [],
    "releases": [
@@ -488,6 +542,12 @@ window.MOD_DATA = {
      "date": "2026-05-27T13:40:31.998000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     269
+    ]
    ]
   },
   {
@@ -514,7 +574,7 @@ window.MOD_DATA = {
     "apia"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/21243a4500664680e3361806c5696784ea0e89e1.thumb.png",
    "images": [],
    "releases": [
@@ -528,6 +588,12 @@ window.MOD_DATA = {
      "date": "2026-06-05T20:16:12.704000Z",
      "factorio": "2.0"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     73
+    ]
    ]
   },
   {
@@ -538,8 +604,8 @@ window.MOD_DATA = {
    "changelog": "",
    "category": "tweaks",
    "tags": [
-    "cheats",
-    "mining"
+    "mining",
+    "cheats"
    ],
    "downloads": 120,
    "created": "2026-06-15T19:17:03.876000Z",
@@ -554,7 +620,7 @@ window.MOD_DATA = {
     "base >= 2.0.7"
    ],
    "license": "MIT",
-   "source": "",
+   "source": "https://sargapulcsis.github.io",
    "thumbnail": "https://assets-mod.factorio.com/assets/9fb12962da3be5259e1308c76c404b011c842042.thumb.png",
    "images": [
     "https://assets-mod.factorio.com/assets/6ec6a5a6781e1df04e9ba0e2e83129cfb0e77920.png"
@@ -575,6 +641,12 @@ window.MOD_DATA = {
      "date": "2026-06-30T16:34:37.035000Z",
      "factorio": "2.1"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     120
+    ]
    ]
   },
   {
@@ -615,7 +687,37 @@ window.MOD_DATA = {
      "date": "2024-09-23T05:50:28.672000Z",
      "factorio": "1.1"
     }
+   ],
+   "history": [
+    [
+     "2026-10-30",
+     61
+    ]
    ]
   }
- ]
+ ],
+ "titles": {
+  "space-exploration": "Space Exploration",
+  "bztitanium": "Titanium",
+  "Krastorio2": "Krastorio 2",
+  "base": "[reserved]",
+  "Krastorio2Assets": "Krastorio 2 Assets",
+  "Atomic_Overhaul": "Atomic Overhaul",
+  "recipe-tweaker": "Recipe Tweaker",
+  "space-age": "[reserved]",
+  "maraxsis": "Maraxsis",
+  "planet-muluna": "Muluna, Moon of Nauvis",
+  "PlanetsLib": "PlanetsLib",
+  "Age-of-Production": "Age of Production",
+  "Krastorio2-spaced-out": "Krastorio 2 Spaced Out",
+  "nulls-k2so-tweaks": "Null's K2SO Tweaks",
+  "Imersite-Asteroids": "Krastorio 2 Imersite Asteroids",
+  "planetaris-hyarion": "🌐Planetaris: Hyarion",
+  "planetaris-arig": "🌐 Planetaris: Arig",
+  "aop-k2so-compat": "Age of Production K2SO Compat",
+  "apia": "Apia-Carnova planet system",
+  "planetaris-tellus": "🌐Planetaris: Tellus",
+  "k2-planet-mod": "Krastorio 2 Planet",
+  "K1-space": "Krastorio Legacy: Spaced Out Lite"
+ }
 };

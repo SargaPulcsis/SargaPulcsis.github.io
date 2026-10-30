@@ -10,8 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: write # for the keep-alive step
-  contents: read
+  contents: write # commits data/history.json back
   pages: write
   id-token: write
 
@@ -32,15 +31,19 @@ jobs:
           python-version: "3.12"
       # If the portal is down, deploy with the committed data/mods.js.
       - run: python scripts/fetch_mods.py || echo "::warning::Mod Portal fetch failed, using committed data"
+      # history.json only changes on the first run of a day, so this commits once a day.
+      # The daily commit also keeps GitHub from pausing the schedule after 60 idle days.
+      - name: Save download history
+        run: |
+          [ -z "$(git status --porcelain data/history.json)" ] && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/history.json
+          git commit -m "Update download history"
+          git pull --rebase -q && git push -q || echo "::warning::Could not push history; the next run retries"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .
       - id: deployment
         uses: actions/deploy-pages@v5
-      # GitHub pauses scheduled workflows after 60 days without commits;
-      # re-enabling the workflow resets that timer.
-      - if: always() && github.event_name == 'schedule'
-        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/pages.yml/enable"
-        env:
-          GH_TOKEN: ${{ github.token }}

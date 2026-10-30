@@ -3,16 +3,22 @@
 The portal API sends no CORS headers, so the site cannot query it from the
 browser; this script runs in GitHub Actions before each deploy instead.
 The data is a script (not JSON) so the pages also work opened from disk.
+
+The portal only reports the current download count, so data/history.json keeps
+one [date, downloads] point per mod per day; the workflow commits it back.
 """
 import json
 import sys
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 OWNER = "SargaPulcsis"
 API = "https://mods.factorio.com/api/mods"
 ASSETS = "https://assets-mod.factorio.com"
-OUT = Path(__file__).resolve().parent.parent / "data" / "mods.js"
+DATA = Path(__file__).resolve().parent.parent / "data"
+OUT = DATA / "mods.js"
+HISTORY = DATA / "history.json"
 
 
 def get(url):
@@ -58,6 +64,20 @@ def slim(m):
     }
 
 
+def record_history(mods):
+    """Add today's count for each mod (first run of the day wins) and attach the series."""
+    history = json.loads(HISTORY.read_text(encoding="utf-8")) if HISTORY.exists() else {}
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for m in mods:
+        points = history.setdefault(m["name"], [])
+        if not points or points[-1][0] != today:
+            points.append([today, m["downloads"]])
+        m["history"] = points
+    # one line per mod keeps the daily commits readable
+    lines = [f" {json.dumps(k)}: {json.dumps(v)}" for k, v in sorted(history.items())]
+    HISTORY.write_text("{\n" + ",\n".join(lines) + "\n}\n", encoding="utf-8")
+
+
 def main():
     listing = get(f"{API}?page_size=max")["results"]
     names = [m["name"] for m in listing if m.get("owner") == OWNER]
@@ -65,8 +85,14 @@ def main():
         sys.exit(f"No mods found for {OWNER}; refusing to overwrite {OUT}")
     mods = [slim(get(f"{API}/{n}/full")) for n in names]
     mods.sort(key=lambda m: m["updated"] or "", reverse=True)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    data = json.dumps({"owner": OWNER, "mods": mods}, ensure_ascii=False, indent=1)
+    record_history(mods)
+
+    # Titles of the mods mine depend on, for the compatibility table.
+    deps = {d.lstrip("!?()~+ ").split()[0] for m in mods for d in m["dependencies"] if d.strip()}
+    titles = {m["name"]: m["title"] for m in listing if m["name"] in deps}
+
+    DATA.mkdir(parents=True, exist_ok=True)
+    data = json.dumps({"owner": OWNER, "mods": mods, "titles": titles}, ensure_ascii=False, indent=1)
     OUT.write_text(f"window.MOD_DATA = {data};\n", encoding="utf-8")
     print(f"Wrote {len(mods)} mods to {OUT}")
 
