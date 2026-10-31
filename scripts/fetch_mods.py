@@ -8,6 +8,7 @@ The portal only reports the current download count, so data/history.json keeps
 one [date, downloads] point per mod per day; the workflow commits it back.
 """
 import json
+import re
 import sys
 import urllib.request
 from datetime import datetime, timezone
@@ -21,10 +22,24 @@ OUT = DATA / "mods.js"
 HISTORY = DATA / "history.json"
 
 
-def get(url):
+def get(url, raw=False):
     req = urllib.request.Request(url, headers={"User-Agent": f"{OWNER}-mod-site"})
     with urllib.request.urlopen(req, timeout=120) as r:
-        return json.load(r)
+        return r.read().decode("utf-8") if raw else json.load(r)
+
+
+def profile_names():
+    """Mod names linked from the owner's portal page.
+
+    The full API listing lags behind: a freshly uploaded mod is missing from it
+    for a while, but the profile page lists it right away.
+    """
+    try:
+        page = get(f"https://mods.factorio.com/user/{OWNER}", raw=True)
+    except OSError as e:
+        print(f"Profile page unavailable ({e}); using the API listing only")
+        return set()
+    return set(re.findall(r'href="/mod/([^"/?#]+)"', page))
 
 
 def asset(path):
@@ -80,10 +95,16 @@ def record_history(mods):
 
 def main():
     listing = get(f"{API}?page_size=max")["results"]
-    names = [m["name"] for m in listing if m.get("owner") == OWNER]
-    if not names:
+    names = {m["name"] for m in listing if m.get("owner") == OWNER} | profile_names()
+    full = []
+    for n in sorted(names):
+        try:
+            full.append(get(f"{API}/{n}/full"))
+        except OSError as e:  # e.g. a 404 for a link that isn't a mod of mine
+            print(f"Skipping {n}: {e}")
+    mods = [slim(m) for m in full if m.get("owner") == OWNER]
+    if not mods:
         sys.exit(f"No mods found for {OWNER}; refusing to overwrite {OUT}")
-    mods = [slim(get(f"{API}/{n}/full")) for n in names]
     mods.sort(key=lambda m: m["updated"] or "", reverse=True)
     record_history(mods)
 
