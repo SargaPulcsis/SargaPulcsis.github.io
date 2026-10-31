@@ -40,13 +40,6 @@ window.UPCOMING = [
     needs: "Base game; Space Age, Krastorio 2 optional",
   },
   {
-    title: "Crop Spray",
-    stage: 3,
-    version: "0.1.1",
-    summary: "Construction robots water the crops of marked agricultural towers or spray them with foliar fertilizer, so they ripen faster. No new robot, tower or plant: a planner tool, a few sprays and a small script.",
-    needs: "Space Age; Krastorio 2 Spaced Out optional",
-  },
-  {
     title: "Entropia",
     stage: 1,
     summary: "A Space Age overhaul where every machine makes heat and every advanced process needs it: temperature tiers, waste heat to recover, and cooling that depends on the planet.",
