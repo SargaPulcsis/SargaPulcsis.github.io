@@ -40,7 +40,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/history.json
           git commit -m "Update download history"
-          git pull --rebase -q && git push -q || echo "::warning::Could not push history; the next run retries"
+          # --autostash: fetch_mods.py also rewrites data/mods.js, which a plain rebase refuses
+          git pull --rebase --autostash -q origin main && git push -q origin HEAD:main \
+            || echo "::warning::Could not push history; the next run retries"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

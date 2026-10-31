@@ -26,13 +26,6 @@ window.UPCOMING = [
     needs: "Base game; Space Age and Quality optional",
   },
   {
-    title: "Robot Battery Swap",
-    stage: 2,
-    version: "0.1.0",
-    summary: "Robots carry a swappable battery pack: on a roboport charging spot they trade the empty pack for a charged one from the logistic network and fly off at once. No new buildings.",
-    needs: "Base game; Space Age, Krastorio 2 optional",
-  },
-  {
     title: "Polymer Industry",
     stage: 2,
     version: "0.1.0",
@@ -48,7 +41,8 @@ window.UPCOMING = [
   },
   {
     title: "Crop Spray",
-    stage: 1,
+    stage: 3,
+    version: "0.1.1",
     summary: "Construction robots water the crops of marked agricultural towers or spray them with foliar fertilizer, so they ripen faster. No new robot, tower or plant: a planner tool, a few sprays and a small script.",
     needs: "Space Age; Krastorio 2 Spaced Out optional",
   },
